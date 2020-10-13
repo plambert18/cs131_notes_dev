@@ -4,9 +4,50 @@ keywords: (insert comma-separated keywords here)
 order: 7 # Lecture number for 2020
 ---
 
-**Lorem ipsum** dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-sunt in culpa qui officia deserunt mollit anim id est laborum.
+You can start your notes here before you start diving into specific topics under each heading. This is a useful place to define the topic of the day and lay out the structure of your lecture notes. You'll edit the Markdown file, in this case template.md, which will automatically convert to HTML and serve this web page you're reading! 
+
+The table of contents can link to each section so long as you match the names right (see comments in template.md for more elaboration on this!). This Markdown to HTML mapping doesn't like periods in the section titles and won't link them from the table of contents, so use dashes instead if you need to.
+
+- [Statistical Image Modeling](#statistical-image-modeling)
+	- [Subtopic 1-1](#subtopic-1-1)
+	- [Subtopic 1-2](#subtopic-1-2)
+	- [Subtopic 1-3](#subtopic-1-3)
+- [Pixel Level Models](#pixel-level-models)
+- [Patch Level Models](#patch-level-models)
+- [Non Parametric Models](#non-parametric-models)
+
+[//]: # (This is how you can make a comment that won't appear in the web page! It might be visible on some machines/browsers so use this only for development.)
+
+[//]: # (Notice in the table of contents that [First Big Topic] matches #first-big-topic, except for all lowercase and spaces are replaced with dashes. This is important so that the table of contents links properly to the sections)
+
+[//]: # (Leave this line here, but you can replace the name field with anything! It's used in the HTML structure of the page but isn't visible to users)
+
+<a name='Statistical Image Modeling'></a>
+## Statistical Image Modeling
+	
+Here you can start to talk about the first topic of your notes. You can bold text like **this**, or italicize text like *this*. If you want to make a numbered list it's as easy as
+1.  
+2. 
+3. 
+
+- Bullet
+- points
+- are
+- similar 
+
+<a name='Pixel Level Models'></a>
+## Pixel Level Models
+
+<a name='Introduction'></a>
+### Introduction
+When we attempt to **statistically model** an image, we must first note that what we are seeing (the **luminance** of the image) comes from the product of two variables: **reflectance** and **illumination**. In this section, we will assume that these variables are pixel-specific, so that each pixel (x,y) has reflectance R and illumination I. From here on, we call these variables **L**, **R**, and **I** respectively. One way that we can visualize this is through imagining that $L$ is equal to a fixed constant, like 1. Then, we have that $R * I = 1$. Our puzzle is to figure out the optimal values of $R$ and $I$ so that we can model an image, without knowing either of their true values. 
+
+<a name='Bayesian Approach'></a>
+### Bayesian Approach
+One way that we can look at the seemingly-unsolvable problem $R * I = 1$, where we have two unknowns in one equation, is through a Bayesian lens. Our ultimate goal is to calculate $R$ and $I$ to maximize the equation $P(R,I | L = 1)$. Through a Bayesian lens, we can think of this equation as a posterior probability, where we observe that the Luminance is equal to 1 and now must find the Reflectance and Illumination values that maximize the probability of this Luminance occurring. Then, by **Bayes' Formula**, we can transform this posterior probability into a product of a likelihood function and a prior probability; formally, $$P(R, I | R * I = L = 1) = k * P(R * I = L = 1 | R, I) * P(R, I)$$ where $k$ is some constant. \newline As an example
+
+<a name='Patch Level Models'></a>
+## Patch Level Models
+
+<a name='Non Parametric Models'></a>
+## Non Parametric Models
