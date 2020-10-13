@@ -15,7 +15,7 @@ The table of contents can link to each section so long as you match the names ri
 - [Pixel Level Models](#pixel-level-models)
 	- [Introduction](#introduction)
 	- [Bayesian Approach](#bayesian-approach)
-	- [Subtopic 1-3](#subtopic-1-3)
+	- [Isolated Pixel Intensities: An Introductory Model](#isolated-pixel-intensities:-an-introductory-model)
 - [Patch Level Models](#patch-level-models)
 - [Non Parametric Models](#non-parametric-models)
 
