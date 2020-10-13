@@ -13,6 +13,9 @@ The table of contents can link to each section so long as you match the names ri
 	- [Subtopic 1-2](#subtopic-1-2)
 	- [Subtopic 1-3](#subtopic-1-3)
 - [Pixel Level Models](#pixel-level-models)
+	- [Introduction](#introduction)
+	- [Bayesian Approach](#bayesian-approach)
+	- [Subtopic 1-3](#subtopic-1-3)
 - [Patch Level Models](#patch-level-models)
 - [Non Parametric Models](#non-parametric-models)
 
@@ -49,6 +52,24 @@ Through a Bayesian lens, we can think of this equation as a posterior probabilit
 Formally, $$P(R, I | R * I = L = 1) = k * P(R * I = L = 1 | R, I) * P(R, I)$$ where $k$ is some constant. 
 As an example likelihood function, we can take: \\[ P(L = 1 | R, I) = k * e^{\frac{-(1 - R * I)^2}{2 * \sigma ^2}} \\] This example likelihood function is basically measuring how close the product of $R$ and $I$ is to $L = 1$; as it gets closer, the likelihood gets higher, and vice versa.
 As an example prior function, we can take: \\[ P(R, I) = k * e^{\frac{-(R - I)^2}{2 * \sigma ^2}} \\] This example prior is basically measuring how close our values of Reflectance and Luminance are to each other.
+Overall, the Bayesian Approach that we introduced here is one important method to **statistically model** an image.
+
+<a name='Isolated Pixel Intensities: An Introductory Model'></a>
+### Isolated Pixel Intensities: An Introductory Model
+The **Isolated Pixel Intensity** model focuses on building an Image Prior based on individual pixels.
+We perform the following steps to build this Image Prior for a given image $I$:
+1. Mask the entire image except for one pixel (call it I(x,y)).
+2. Calculate our prior function of this pixel based on its values (e.g. calculate $p(I(x,y))$, where $p$ is our prior function and I(x,y) is a given image pixel).
+3. Repeat this process for every pixel in the image.
+4. Calculate the product of all these values; the resultant product will be our Image Prior, or $p(I)$.
+Formally, \\[ p(I) = \product_{x,y} p(I(x,y))\\]
+This is a very simplified image prior, and makes the following assumptions:
+- All pixels are independent of one another
+- Pixel distributions are equal across all image positions; e.g. pixel intensities do not depend on image position
+These assumptions are often incorrect in practice, and thus can cause our prior to err.
+- For example, if pixels are very close to each other, then their intensities are likely to be very close or even the same; as pixels move farther and farther apart, though, they're much less likely to have similar intensities.
+- We can see this 
+
 
 <a name='Patch Level Models'></a>
 ## Patch Level Models
