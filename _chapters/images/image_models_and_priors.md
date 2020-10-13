@@ -44,7 +44,11 @@ When we attempt to **statistically model** an image, we must first note that wha
 
 <a name='Bayesian Approach'></a>
 ### Bayesian Approach
-One way that we can look at the seemingly-unsolvable problem $R * I = 1$, where we have two unknowns in one equation, is through a Bayesian lens. Our ultimate goal is to calculate $R$ and $I$ to maximize the equation $P(R,I | L = 1)$. Through a Bayesian lens, we can think of this equation as a posterior probability, where we observe that the Luminance is equal to 1 and now must find the Reflectance and Illumination values that maximize the probability of this Luminance occurring. Then, by **Bayes' Formula**, we can transform this posterior probability into a product of a likelihood function and a prior probability; formally, $$P(R, I | R * I = L = 1) = k * P(R * I = L = 1 | R, I) * P(R, I)$$ where $k$ is some constant. \newline As an example
+One way that we can look at the seemingly-unsolvable problem $R * I = 1$, where we have two unknowns in one equation, is through a Bayesian lens. Our ultimate goal is to calculate $R$ and $I$ to maximize the equation $P(R,I | L = 1)$. 
+Through a Bayesian lens, we can think of this equation as a posterior probability, where we observe that the Luminance is equal to 1 and now must find the Reflectance and Illumination values that maximize the probability of this Luminance occurring. Then, by **Bayes' Formula**, we can transform this posterior probability into a product of a likelihood function and a prior probability. 
+Formally, $$P(R, I | R * I = L = 1) = k * P(R * I = L = 1 | R, I) * P(R, I)$$ where $k$ is some constant. 
+As an example likelihood function, we can take: \\[ P(L = 1 | R, I) = k * e^{\frac{-(1 - R * I)^2}{2 * \sigma ^2}} \\] This example likelihood function is basically measuring how close the product of $R$ and $I$ is to $L = 1$; as it gets closer, the likelihood gets higher, and vice versa.
+As an example prior function, we can take: \\[ P(R, I) = k * e^{\frac{-(R - I)^2}{2 * \sigma ^2}} \\] This example prior is basically measuring how close our values of Reflectance and Luminance are to each other.
 
 <a name='Patch Level Models'></a>
 ## Patch Level Models
