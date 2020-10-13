@@ -66,9 +66,10 @@ Formally, \\[ p(I) = \product_{x,y} p(I(x,y))\\]
 This is a very simplified image prior, and makes the following assumptions:
 - All pixels are independent of one another
 - Pixel distributions are equal across all image positions; e.g. pixel intensities do not depend on image position
+
 These assumptions are often incorrect in practice, and thus can cause our prior to err.
 - For example, if pixels are very close to each other, then their intensities are likely to be very close or even the same; as pixels move farther and farther apart, though, they're much less likely to have similar intensities.
-- We can see this 
+
 
 
 <a name='Patch Level Models'></a>
