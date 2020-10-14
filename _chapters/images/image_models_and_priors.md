@@ -5,6 +5,7 @@ order: 7 # Lecture number for 2020
 ---
 
 
+This lecture discusses statistical image models (i.e. models that rely on statistics). The table of contents for this lecture includes:
 
 
 - [Statistical Image Modeling](#statistical-image-modeling)
