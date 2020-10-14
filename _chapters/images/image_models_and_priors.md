@@ -82,6 +82,14 @@ Covariance is a measure of how pixel intensities vary together; we find that if 
 
 <a name='Patch Level Models'></a>
 ## Patch Level Models
+We want to be able to build statistical models for small neighborhoods, not just one or two pixels. 
+To do this, we look at patches in an image. 
+When we model the frequencies of pixel intensities for raw images, it is  difficult to extract useful information. However, if we convolve a raw image with a filter such as [-1 1], we get a sparse response centered at 0. This is because neighboring pixel often have similar colors, so they cancel each other out when convolved with such a filter.
+This property applies regardless of the original intensity graph.
+We can use a Generalized Gaussian Model to model the distribution of possible filter output:
+$p(x) = \frac{\exp{-\abs{x/s}^r}{2s/r\Gamma (1/r)}$
+Here, the parameter r determines the kind of distribution it is--e.g. Laplacian, Gaussian, Uniform. 
+
 
 <a name='Non Parametric Models'></a>
 ## Non Parametric Models
