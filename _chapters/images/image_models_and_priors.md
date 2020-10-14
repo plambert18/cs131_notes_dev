@@ -74,7 +74,7 @@ These assumptions are often incorrect in practice, and thus can cause our prior 
 - For example, if pixels are very close to each other, then their intensities are likely to be very close or even the same; as pixels move farther and farther apart, though, they're much less likely to have similar intensities.
 
 <a name='Pixel Intensity Covariance Model'></a>
-### A Second Model: Pixel Intensity Covariance Model
+### Pixel Intensity Covariance Model
 The **Pixel Intensity Covariance** model takes our previous work a step further, and models the covariance between two different pixels.
 Covariance is a measure of how pixel intensities vary together; we find that if pixels are close together, their intensity values are highly correlated (and in many cases likely to be the same), but if they aren't close together, their intensity values really aren't correlated at all. This is exactly one of the problems that we identified with our last model!
 - One important note is that there is often a difference between correlation with vertical pixel difference and horizontal pixel difference. We normally see that pixels with a large horizontal difference, but little vertical difference, retain some correlation in intensity values, while pixels with a large vertical difference and little horizontal difference display little to no correlation in intensity values. This is often attributed to the horizontal layer structure of images in the natural world, and indeed our perception of what we see; we display a rudimentary prior that images at the same height tend to have similar properties.
