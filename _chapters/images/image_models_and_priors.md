@@ -23,7 +23,7 @@ This lecture discusses statistical image models (i.e. models that rely on statis
 <a name='Statistical Image Modeling'></a>
 ## Statistical Image Modeling
 	
-This first section introduces the idea of statistical image models by considering how it relates to human perception. When we look at images, we heavily rely on our prior knowledge of the world in order to understand them. For instance, using our prior knowledge, we are able to (1) separate images into components, such as the real-world object and noise, as shown in Figure 1, (2) differentiate between texture and noise in an image, and (3) decide which of several possible scenarios the image is most likely representing, as shown in Figure 2. Therefore, we can see that much of our perception of images relies on the prior knowledge and assumptions that we make. In the rest of this lecture, we will talk about how we can build models that capture those assumptions.
+This first section introduces the idea of statistical image models by considering how they relate to human perception. When we look at images, we heavily rely on our prior knowledge of the world in order to understand them. For instance, using our prior knowledge, we are able to (1) separate images into components, such as the real-world object and noise, as shown in Figure 1, (2) differentiate between texture and noise in an image, and (3) decide which of several possible scenarios the image is most likely representing, as shown in Figure 2. Therefore, we can see that much of our perception of images relies on the prior knowledge and assumptions that we make. In the rest of this lecture, we will talk about how we can build models that capture those assumptions.
 
 <div class="fig figcenter fighighlight">
   <img src="{{ site.baseurl }}/assets/examples/seperatingImagesIntoComponents.png">
@@ -78,10 +78,9 @@ Covariance is a measure of how pixel intensities vary together; we find that if 
 ## Patch Level Models
 We want to be able to build statistical models for small neighborhoods, not just one or two pixels. 
 To do this, we look at patches in an image. 
-When we model the frequencies of pixel intensities for raw images, it is  difficult to extract useful information. However, if we convolve a raw image with a filter such as [-1 1], we get a sparse response centered at 0. This is because neighboring pixel often have similar colors, so they cancel each other out when convolved with such a filter.
+When we model the frequencies of pixel intensities for raw images, it is  difficult to extract useful information. However, if we convolve a raw image with a filter like [-1 1], we get a sparse response centered at 0. This is because neighboring pixel often have similar colors, so they cancel each other out when convolved with such a filter.
 This property applies regardless of the original intensity graph.
 Thus, we can use a Generalized Gaussian Model to model the distribution of possible filter output:
-\\[ p(x) = \frac{exp(- \lvert x/s \rvert ^r)}{2s/r\Gamma (1/r)}\\]
 Here, the parameter r determines the kind of distribution it is--e.g. Laplacian, Gaussian, Uniform. 
 
 <div class="fig figcenter fighighlight">
@@ -95,7 +94,6 @@ We still treat each pixel as independent, so we multiply over all of the pixels.
 We also assume we have k filters, and we apply each filter to the patch centered at each point (x,y).
 Thus, for each filter at each patch, we get a Generalized Gaussian Distribution (represented by p) with its own value for r.
 Since we assume each filter response distribution is independent, we can multiply together all of the Generalized Gaussian Distributions to get the prior of the image.
-\\[ prior(I) = \prod_{k} \prod_{x,y}_ p(h_k(x,y)) \\]
 
 <div class="fig figcenter fighighlight">
   <img src="{{ site.baseurl }}/assets/images/Model2.png">
