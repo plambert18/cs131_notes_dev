@@ -4,12 +4,9 @@ keywords: Image Modeling, Bayesian Modeling, Pixel Distributions
 order: 7 # Lecture number for 2020
 ---
 
-This lecture discusses statistical image models (i.e. models that rely on statistics). The table of contents for this lecture includes:
+
 
 - [Statistical Image Modeling](#statistical-image-modeling)
-	- [Subtopic 1-1](#subtopic-1-1)
-	- [Subtopic 1-2](#subtopic-1-2)
-	- [Subtopic 1-3](#subtopic-1-3)
 - [Pixel Level Models](#pixel-level-models)
 	- [Introduction](#introduction)
 	- [Bayesian Approach to Modeling](#bayesian-approach-to-modeling)
@@ -20,24 +17,21 @@ This lecture discusses statistical image models (i.e. models that rely on statis
 	- [Pattern Matching](#introduction)
 	- [Non Parametric Sampling Approach](#non-parametric-sampling-approach)
 
-[//]: # (This is how you can make a comment that won't appear in the web page! It might be visible on some machines/browsers so use this only for development.)
-
-[//]: # (Notice in the table of contents that [First Big Topic] matches #first-big-topic, except for all lowercase and spaces are replaced with dashes. This is important so that the table of contents links properly to the sections)
-
-[//]: # (Leave this line here, but you can replace the name field with anything! It's used in the HTML structure of the page but isn't visible to users)
 
 <a name='Statistical Image Modeling'></a>
 ## Statistical Image Modeling
 	
-Here you can start to talk about the first topic of your notes. You can bold text like **this**, or italicize text like *this*. If you want to make a numbered list it's as easy as
-1.  
-2. 
-3. 
+This first section introduces the idea of statistical image models by considering how it relates to human perception. When we look at images, we heavily rely on our prior knowledge of the world in order to understand them. For instance, using our prior knowledge, we are able to (1) separate images into components, such as the real-world object and noise, as shown in Figure 1, (2) differentiate between texture and noise in an image, and (3) decide which of several possible scenarios the image is most likely representing, as shown in Figure 2. Therefore, we can see that much of our perception of images relies on the prior knowledge and assumptions that we make. In the rest of this lecture, we will talk about how we can build models that capture those assumptions.
 
-- Bullet
-- points
-- are
-- similar 
+<div class="fig figcenter fighighlight">
+  <img src="{{ site.baseurl }}/assets/examples/seperatingImagesIntoComponents.png">
+  <div class="figcaption">Separating image into components</div>
+</div>
+
+<div class="fig figcenter fighighlight">
+  <img src="{{ site.baseurl }}/assets/examples/multiplePossibleScenarios.png">
+  <div class="figcaption">Multiple possible scenarios</div>
+</div>
 
 <a name='Pixel Level Models'></a>
 ## Pixel Level Models
