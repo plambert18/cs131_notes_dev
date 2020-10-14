@@ -1,6 +1,6 @@
 ---
 title: Image models and priors
-keywords: (insert comma-separated keywords here)
+keywords: Image Modeling, Bayesian Modeling, Pixel Distributions
 order: 7 # Lecture number for 2020
 ---
 
@@ -15,7 +15,8 @@ The table of contents can link to each section so long as you match the names ri
 - [Pixel Level Models](#pixel-level-models)
 	- [Introduction](#introduction)
 	- [Bayesian Approach](#bayesian-approach)
-	- [Isolated Pixel Intensities: An Introductory Model](#isolated-pixel-intensities:-an-introductory-model)
+	- [Isolated Pixel Intensities](#isolated-pixel-intensities)
+	- [Pixel Intensity Covariance](#pixel-intensity-covariance)
 - [Patch Level Models](#patch-level-models)
 - [Non Parametric Models](#non-parametric-models)
 	- [Pattern Matching](#introduction)
@@ -56,7 +57,7 @@ As an example likelihood function, we can take: \\[ P(L = 1 | R, I) = k * e^{\fr
 As an example prior function, we can take: \\[ P(R, I) = k * e^{\frac{-(R - I)^2}{2 * \sigma ^2}} \\] This example prior is basically measuring how close our values of Reflectance and Luminance are to each other.
 Overall, the Bayesian Approach that we introduced here is one important method to **statistically model** an image.
 
-<a name='Isolated Pixel Intensities: An Introductory Model'></a>
+<a name='Isolated Pixel Intensities'></a>
 ### Isolated Pixel Intensities: An Introductory Model
 The **Isolated Pixel Intensity** model focuses on building an Image Prior based on individual pixels.
 We perform the following steps to build this Image Prior for a given image $I$:
@@ -72,7 +73,7 @@ This is a very simplified image prior, and makes the following assumptions:
 These assumptions are often incorrect in practice, and thus can cause our prior to err.
 - For example, if pixels are very close to each other, then their intensities are likely to be very close or even the same; as pixels move farther and farther apart, though, they're much less likely to have similar intensities.
 
-<a name='A Second Model: Pixel Intensity Covariance'></a>
+<a name='Pixel Intensity Covariance'></a>
 ### A Second Model: Pixel Intensity Covariance
 The **Pixel Intensity Covariance** model takes our previous work a step further, and models the covariance between two different pixels.
 Covariance is a measure of how pixel intensities vary together; we find that if pixels are close together, their intensity values are highly correlated (and in many cases likely to be the same), but if they aren't close together, their intensity values really aren't correlated at all. This is exactly one of the problems that we identified with our last model!
