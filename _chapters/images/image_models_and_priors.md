@@ -66,7 +66,7 @@ These assumptions are often incorrect in practice, and thus can cause our prior 
 - For example, if pixels are very close to each other, then their intensities are likely to be very close or even the same; as pixels move farther and farther apart, though, they're much less likely to have similar intensities.
 
 <a name='Pixel Intensity Covariance Model'></a>
-### Pixel Intensity Covariance Model
+### A Second Model: Pixel Intensity Covariance Model
 The **Pixel Intensity Covariance** model takes our previous work a step further, and models the covariance between two different pixels.
 Covariance is a measure of how pixel intensities vary together; we find that if pixels are close together, their intensity values are highly correlated (and in many cases likely to be the same), but if they aren't close together, their intensity values really aren't correlated at all. This is exactly one of the problems that we identified with our last model!
 - One important note is that there is often a difference between correlation with vertical pixel difference and horizontal pixel difference. We normally see that pixels with a large horizontal difference, but little vertical difference, retain some correlation in intensity values, while pixels with a large vertical difference and little horizontal difference display little to no correlation in intensity values. This is often attributed to the horizontal layer structure of images in the natural world, and indeed our perception of what we see; we display a rudimentary prior that images at the same height tend to have similar properties.
@@ -78,16 +78,33 @@ We want to be able to build statistical models for small neighborhoods, not just
 To do this, we look at patches in an image. 
 When we model the frequencies of pixel intensities for raw images, it is  difficult to extract useful information. However, if we convolve a raw image with a filter such as [-1 1], we get a sparse response centered at 0. This is because neighboring pixel often have similar colors, so they cancel each other out when convolved with such a filter.
 This property applies regardless of the original intensity graph.
-We can use a Generalized Gaussian Model to model the distribution of possible filter output:
-$p(x) = \frac{\exp{-\abs{x/s}^r}{2s/r\Gamma (1/r)}$
+Thus, we can use a Generalized Gaussian Model to model the distribution of possible filter output:
+\\[ p(x) = \frac{exp(- \abs{x/s}^r)}{2s/r\Gamma (1/r)}\\]
 Here, the parameter r determines the kind of distribution it is--e.g. Laplacian, Gaussian, Uniform. 
 
+We use this idea in Model 2: the Wavelet Marginal Model. 
+Here, we want to build a model of the prior of the entire image.
+We still treat each pixel as independent, so we multiply over all of the pixels.
+We also assume we have k filters, and we apply each filter to the patch centered at each point (x,y).
+Thus, for each filter at each patch, we get a Generalized Gaussian Distribution (represented by p) with its own value for r.
+Since we assume each filter response distribution is independent, we can multiply together all of the Generalized Gaussian Distributions to get the prior of the image.
+\\[ prior(I) = \prod_{k} \prod_{x,y}_p(h_k(x,y))\\]
+
+
+We can use the Wavelet Marginal Model to solve the problem of Denoising.
+Denoising is the process of breaking a noisy image (y) into its components of noise (n) and a non-noisy image (x).
+That is, y = x+n, where we assume that n is Gaussian.
+(Insert image here)
+y is your observation, and P(x) is your prior, which comes from the fact that the intensities of a filter output function should follow a Generalized Gaussian Distribution. P(y|x) is the Gaussian likelihood function.
+By Bayes Theorem, P(x|y) ~ P(y|x)P(x)
+Thus, if y is small (i.e. not too far away from the center of P(x)), multiplying it with P(x) will cause P(x|y) to still be near the prior; that slight deviation in y from 0 is likely due to noise.
+However, if y is very large, it is likely an edge, and P(x|y) will be pulled much closer to y.
+Thus, when denoising, we should set small y values to 0 (as they are likely noise) and leave large y values alone (as they are likely edges).
 
 <a name='Non Parametric Models'></a>
 ## Non Parametric Models
 
-<a name='Pattern Matching'></a>
-### Patern Matching
+<a name='Pattern Matching'></### Pattern Matching
 
 Pixel and patch level models perform well at certain tasks, but they have limitations. Consider the challenge of texture synthesis, where the goal is to generate new samples of a given texture. Texture synthesis has many applications including virtual environments, hole-filling and texturing surfaces. Pixel or patch level models are not enough, as we must model the entire spectrum from larger repeated structures to stochastic textures. These other models don’t perform well at capturing repeated structures, as they are focused too locally to understand global patterns. 
 
