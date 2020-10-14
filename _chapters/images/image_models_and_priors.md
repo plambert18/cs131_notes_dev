@@ -95,7 +95,6 @@ We still treat each pixel as independent, so we multiply over all of the pixels.
 We also assume we have k filters, and we apply each filter to the patch centered at each point (x,y).
 Thus, for each filter at each patch, we get a Generalized Gaussian Distribution (represented by p) with its own value for r.
 Since we assume each filter response distribution is independent, we can multiply together all of the Generalized Gaussian Distributions to get the prior of the image.
-\\[ prior(I) = \prod_{k} \prod_{x,y}_ p(h_k(x,y)) \\]
 
 <div class="fig figcenter fighighlight">
   <img src="{{ site.baseurl }}/assets/images/Model2.png">
@@ -111,7 +110,7 @@ That is, y = x+n, where we assume that n is Gaussian.
   <div class="figcaption">Denoising Images</div>
 </div>
 
-y is your observation, and P(x) is your prior, which comes from the fact that the intensities of a filter output function should follow a Generalized Gaussian Distribution. P(y|x) is the Gaussian likelihood function.
+Here, y is your observation and P(x) is your prior, which comes from the fact that the intensities of a filter output function should follow a Generalized Gaussian Distribution. P(y|x) is the Gaussian likelihood function.
 By Bayes Theorem, P(x|y) ~ P(y|x)P(x)
 Thus, if y is small (i.e. not too far away from the center of P(x)), multiplying it with P(x) will cause P(x|y) to still be near the prior; that slight deviation in y from 0 is likely due to noise.
 However, if y is very large, it is likely an edge, and P(x|y) will be pulled much closer to y.
