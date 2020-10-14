@@ -120,14 +120,17 @@ Thus, when denoising, we should set small y values to 0 (as they are likely nois
 <a name='Non Parametric Models'></a>
 ## Non Parametric Models
 
-<a name='Pattern Matching'></### Pattern Matching
+<a name='Pattern Matching'></a>	
+### Pattern Matching
 
 Pixel and patch level models perform well at certain tasks, but they have limitations. Consider the challenge of texture synthesis, where the goal is to generate new samples of a given texture. Texture synthesis has many applications including virtual environments, hole-filling and texturing surfaces. Pixel or patch level models are not enough, as we must model the entire spectrum from larger repeated structures to stochastic textures. These other models don’t perform well at capturing repeated structures, as they are focused too locally to understand global patterns. 
 
 <a name='Non Parametric Sampling Approach'></a>
 ### Non Parametric Sampling Approach
 
-Non-parametric models address this by assuming the Markov property and finding the probability $$P(p | N(p))$$.  First, we look at the input image and find spots that have neighbors similar to spots we have already synthesized. We then compute the likelihood of the RGB value of the current pixel conditioned on its neighborhood. The probability density function is just all similar neighborhoods in the input image. We can then sample from this PDF by picking one match at random and using the value of that pixel for the RGB value of the pixel to be synthesized. This allows us to iteratively expand the texture by working off of our previous results to find similar areas in the original image to sample from. 
+Non-parametric models address this by assuming the Markov property and finding the probability $$P(p | N(p))$$.  
+First, we look at the input image and find spots that have neighbors similar to spots we have already synthesized. We then compute the likelihood of the RGB value of the current pixel conditioned on its neighborhood. The probability density function is just all similar neighborhoods in the input image. 
+We can then sample from this PDF by picking one match at random and using the value of that pixel for the RGB value of the pixel to be synthesized. This allows us to iteratively expand the texture by working off of our previous results to find similar areas in the original image to sample from. 
 
 <div class="fig figcenter fighighlight">
   <img src="{{ site.baseurl }}/assets/images/Screen Shot 2020-10-13 at 12.27.20 PM.png">
