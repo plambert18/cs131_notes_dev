@@ -14,9 +14,9 @@ The table of contents can link to each section so long as you match the names ri
 	- [Subtopic 1-3](#subtopic-1-3)
 - [Pixel Level Models](#pixel-level-models)
 	- [Introduction](#introduction)
-	- [Bayesian Approach](#bayesian-approach)
-	- [Isolated Pixel Intensities](#isolated-pixel-intensities)
-	- [Pixel Intensity Covariance](#pixel-intensity-covariance)
+	- [Bayesian Approach to Modeling](#bayesian-approach-to-modeling)
+	- [Isolated Pixel Intensities Model](#isolated-pixel-intensities-model)
+	- [Pixel Intensity Covariance Model](#pixel-intensity-covariance-model)
 - [Patch Level Models](#patch-level-models)
 - [Non Parametric Models](#non-parametric-models)
 	- [Pattern Matching](#introduction)
@@ -48,8 +48,8 @@ Here you can start to talk about the first topic of your notes. You can bold tex
 ### Introduction
 When we attempt to **statistically model** an image, we must first note that what we are seeing (the **luminance** of the image) comes from the product of two variables: **reflectance** and **illumination**. In this section, we will assume that these variables are pixel-specific, so that each pixel (x,y) has reflectance R and illumination I. From here on, we call these variables **L**, **R**, and **I** respectively. One way that we can visualize this is through imagining that $L$ is equal to a fixed constant, like 1. Then, we have that $R * I = 1$. Our puzzle is to figure out the optimal values of $R$ and $I$ so that we can model an image, without knowing either of their true values. 
 
-<a name='Bayesian Approach'></a>
-### Bayesian Approach
+<a name='Bayesian Approach To Modeling'></a>
+### Bayesian Approach To Modeling
 One way that we can look at the seemingly-unsolvable problem $R * I = 1$, where we have two unknowns in one equation, is through a Bayesian lens. Our ultimate goal is to calculate $R$ and $I$ to maximize the equation $P(R,I | L = 1)$. 
 Through a Bayesian lens, we can think of this equation as a posterior probability, where we observe that the Luminance is equal to 1 and now must find the Reflectance and Illumination values that maximize the probability of this Luminance occurring. Then, by **Bayes' Formula**, we can transform this posterior probability into a product of a likelihood function and a prior probability. 
 Formally, $$P(R, I | R * I = L = 1) = k * P(R * I = L = 1 | R, I) * P(R, I)$$ where $k$ is some constant. 
@@ -57,8 +57,8 @@ As an example likelihood function, we can take: \\[ P(L = 1 | R, I) = k * e^{\fr
 As an example prior function, we can take: \\[ P(R, I) = k * e^{\frac{-(R - I)^2}{2 * \sigma ^2}} \\] This example prior is basically measuring how close our values of Reflectance and Luminance are to each other.
 Overall, the Bayesian Approach that we introduced here is one important method to **statistically model** an image.
 
-<a name='Isolated Pixel Intensities'></a>
-### Isolated Pixel Intensities: An Introductory Model
+<a name='Isolated Pixel Intensities Model'></a>
+### Isolated Pixel Intensities Model
 The **Isolated Pixel Intensity** model focuses on building an Image Prior based on individual pixels.
 We perform the following steps to build this Image Prior for a given image $I$:
 1. Mask the entire image except for one pixel (call it I(x,y)).
@@ -73,8 +73,8 @@ This is a very simplified image prior, and makes the following assumptions:
 These assumptions are often incorrect in practice, and thus can cause our prior to err.
 - For example, if pixels are very close to each other, then their intensities are likely to be very close or even the same; as pixels move farther and farther apart, though, they're much less likely to have similar intensities.
 
-<a name='Pixel Intensity Covariance'></a>
-### A Second Model: Pixel Intensity Covariance
+<a name='Pixel Intensity Covariance Model'></a>
+### A Second Model: Pixel Intensity Covariance Model
 The **Pixel Intensity Covariance** model takes our previous work a step further, and models the covariance between two different pixels.
 Covariance is a measure of how pixel intensities vary together; we find that if pixels are close together, their intensity values are highly correlated (and in many cases likely to be the same), but if they aren't close together, their intensity values really aren't correlated at all. This is exactly one of the problems that we identified with our last model!
 - One important note is that there is often a difference between correlation with vertical pixel difference and horizontal pixel difference. We normally see that pixels with a large horizontal difference, but little vertical difference, retain some correlation in intensity values, while pixels with a large vertical difference and little horizontal difference display little to no correlation in intensity values. This is often attributed to the horizontal layer structure of images in the natural world, and indeed our perception of what we see; we display a rudimentary prior that images at the same height tend to have similar properties.
