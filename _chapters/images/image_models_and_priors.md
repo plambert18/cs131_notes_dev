@@ -62,7 +62,7 @@ We perform the following steps to build this Image Prior for a given image $I$:
 2. Calculate our prior function of this pixel based on its values (e.g. calculate $p(I(x,y))$, where $p$ is our prior function and I(x,y) is a given image pixel).
 3. Repeat this process for every pixel in the image.
 4. Calculate the product of all these values; the resultant product will be our Image Prior, or $p(I)$.
-Formally, \\[ p(I) = \product_{x,y} p(I(x,y))\\]
+Formally, \\[ p(I) = \prod_{x,y} p(I(x,y))\\]
 This is a very simplified image prior, and makes the following assumptions:
 - All pixels are independent of one another
 - Pixel distributions are equal across all image positions; e.g. pixel intensities do not depend on image position
@@ -70,6 +70,11 @@ This is a very simplified image prior, and makes the following assumptions:
 These assumptions are often incorrect in practice, and thus can cause our prior to err.
 - For example, if pixels are very close to each other, then their intensities are likely to be very close or even the same; as pixels move farther and farther apart, though, they're much less likely to have similar intensities.
 
+<a name='A Second Model: Pixel Intensity Covariance'></a>
+### A Second Model: Pixel Intensity Covariance
+The **Pixel Intensity Covariance** model takes our previous work a step further, and models the covariance between two different pixels.
+Covariance is a measure of how pixel intensities vary together; we find that if pixels are close together, their intensity values are highly correlated (and in many cases likely to be the same), but if they aren't close together, their intensity values really aren't correlated at all. This is exactly one of the problems that we identified with our last model!
+- One important note is that there is often a difference between correlation with vertical pixel difference and horizontal pixel difference. We normally see that pixels with a large horizontal difference, but little vertical difference, retain some correlation in intensity values, while pixels with a large vertical difference and little horizontal difference display little to no correlation in intensity values. This is often attributed to the horizontal layer structure of images in the natural world, and indeed our perception of what we see; we display a rudimentary prior that images at the same height tend to have similar properties.
 
 
 <a name='Patch Level Models'></a>
