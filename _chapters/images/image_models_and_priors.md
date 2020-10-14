@@ -83,7 +83,7 @@ These assumptions are often incorrect in practice, and thus can cause our prior 
 <a name='Pattern Matching'></a>
 ### Patern Matching
 
-Pixel and patch level models perform well at certain tasks, but they have limitations. Consider the challenge of texture synthesis, where the goal is to generate new samples of a given texture. Texture synthesis has many applications including virtual environments, hole-filling and texturing surfaces. Pixel or patch level models are not enough, as we must model the entire spectrum from larger repeated structures to stochastic textures. These other models don’t perform well at capturing repeated structures, as they are focused too locally to understand global patterns.
+Pixel and patch level models perform well at certain tasks, but they have limitations. Consider the challenge of texture synthesis, where the goal is to generate new samples of a given texture. Texture synthesis has many applications including virtual environments, hole-filling and texturing surfaces. Pixel or patch level models are not enough, as we must model the entire spectrum from larger repeated structures to stochastic textures. These other models don’t perform well at capturing repeated structures, as they are focused too locally to understand global patterns. 
 
 <a name='Non Parametric Sampling Approach'></a>
 ### Non Parametric Sampling Approach
