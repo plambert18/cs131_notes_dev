@@ -18,6 +18,8 @@ The table of contents can link to each section so long as you match the names ri
 	- [Isolated Pixel Intensities: An Introductory Model](#isolated-pixel-intensities:-an-introductory-model)
 - [Patch Level Models](#patch-level-models)
 - [Non Parametric Models](#non-parametric-models)
+	- [Pattern Matching](#introduction)
+	- [Non Parametric Sampling Approach](#non-parametric-sampling-approach)
 
 [//]: # (This is how you can make a comment that won't appear in the web page! It might be visible on some machines/browsers so use this only for development.)
 
@@ -82,3 +84,18 @@ Covariance is a measure of how pixel intensities vary together; we find that if 
 
 <a name='Non Parametric Models'></a>
 ## Non Parametric Models
+
+<a name='Pattern Matching'></a>
+### Patern Matching
+
+Pixel and patch level models perform well at certain tasks, but they have limitations. Consider the challenge of texture synthesis, where the goal is to generate new samples of a given texture. Texture synthesis has many applications including virtual environments, hole-filling and texturing surfaces. Pixel or patch level models are not enough, as we must model the entire spectrum from larger repeated structures to stochastic textures. These other models don’t perform well at capturing repeated structures, as they are focused too locally to understand global patterns. 
+
+<a name='Non Parametric Sampling Approach'></a>
+### Non Parametric Sampling Approach
+
+Non-parametric models address this by assuming the Markov property and finding the probability $P(p|N(p))$.  First, we look at the input image and find spots that have neighbors similar to spots we have already synthesized. We then compute the likelihood of the RGB value of the current pixel conditioned on its neighborhood. The probability density function is just all similar neighborhoods in the input image. We can then sample from this PDF by picking one match at random and using the value of that pixel for the RGB value of the pixel to be synthesized. This allows us to iteratively expand the texture by working off of our previous results to find similar areas in the original image to sample from. 
+
+One of the most important challenges is picking the size of a neighborhood window. If your window is too small, the model does not have enough context to locate the pixel of interest within the pattern. Larger windows can synthesize more regular patterns (e.g. bricks), and thus capture more world information. For instance, a good window size for the example below is a window that can cover at least two objects in the pattern so it can discern the shape of the objects as well as how they are dispersed.  
+
+Using non-parametric models for texture synthesis has several applications beyond creating larger examples of patterns. This same approach can be used for patching holes in images and extrapolating pixels beyond the frame of an image.
+
