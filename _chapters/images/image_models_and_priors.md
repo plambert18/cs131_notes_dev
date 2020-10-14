@@ -4,10 +4,6 @@ keywords: (insert comma-separated keywords here)
 order: 7 # Lecture number for 2020
 ---
 
-You can start your notes here before you start diving into specific topics under each heading. This is a useful place to define the topic of the day and lay out the structure of your lecture notes. You'll edit the Markdown file, in this case template.md, which will automatically convert to HTML and serve this web page you're reading! 
-
-The table of contents can link to each section so long as you match the names right (see comments in template.md for more elaboration on this!). This Markdown to HTML mapping doesn't like periods in the section titles and won't link them from the table of contents, so use dashes instead if you need to.
-
 - [Statistical Image Modeling](#statistical-image-modeling)
 	- [Subtopic 1-1](#subtopic-1-1)
 	- [Subtopic 1-2](#subtopic-1-2)
