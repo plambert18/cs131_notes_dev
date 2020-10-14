@@ -26,12 +26,12 @@ This lecture discusses statistical image models (i.e. models that rely on statis
 This first section introduces the idea of statistical image models by considering how they relate to human perception. When we look at images, we heavily rely on our prior knowledge of the world in order to understand them. For instance, using our prior knowledge, we are able to (1) separate images into components, such as the real-world object and noise, as shown in Figure 1, (2) differentiate between texture and noise in an image, and (3) decide which of several possible scenarios the image is most likely representing, as shown in Figure 2. Therefore, we can see that much of our perception of images relies on the prior knowledge and assumptions that we make. In the rest of this lecture, we will talk about how we can build models that capture those assumptions.
 
 <div class="fig figcenter fighighlight">
-  <img src="{{ site.baseurl }}/assets/examples/seperatingImagesIntoComponents.png">
+  <img src="{{ site.baseurl }}/assets/images/fig1.png">
   <div class="figcaption">Separating image into components</div>
 </div>
 
 <div class="fig figcenter fighighlight">
-  <img src="{{ site.baseurl }}/assets/examples/multiplePossibleScenarios.png">
+  <img src="{{ site.baseurl }}/assets/examples/fig2.png">
   <div class="figcaption">Multiple possible scenarios</div>
 </div>
 
