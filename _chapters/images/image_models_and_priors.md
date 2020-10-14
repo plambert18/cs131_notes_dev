@@ -86,7 +86,7 @@ Here, the parameter r determines the kind of distribution it is--e.g. Laplacian,
 
 <div class="fig figcenter fighighlight">
   <img src="{{ site.baseurl }}/assets/images/GenGauss.png">
-  <div class="figcaption">Sampling from similar neighborhood windows in the input image</div>
+  <div class="figcaption">A Generalized Gaussian Distribution</div>
 </div>
 
 We use this idea in Model 2: the Wavelet Marginal Model. 
@@ -99,7 +99,7 @@ Since we assume each filter response distribution is independent, we can multipl
 
 <div class="fig figcenter fighighlight">
   <img src="{{ site.baseurl }}/assets/images/Model2.png">
-  <div class="figcaption">Sampling from similar neighborhood windows in the input image</div>
+  <div class="figcaption">Wavelet Marginal Model</div>
 </div>
 
 We can use the Wavelet Marginal Model to solve the problem of Denoising.
@@ -108,7 +108,7 @@ That is, y = x+n, where we assume that n is Gaussian.
 
 <div class="fig figcenter fighighlight">
   <img src="{{ site.baseurl }}/assets/images/denoising.png">
-  <div class="figcaption">Sampling from similar neighborhood windows in the input image</div>
+  <div class="figcaption">Denoising Images</div>
 </div>
 
 y is your observation, and P(x) is your prior, which comes from the fact that the intensities of a filter output function should follow a Generalized Gaussian Distribution. P(y|x) is the Gaussian likelihood function.
