@@ -31,7 +31,7 @@ This first section introduces the idea of statistical image models by considerin
 </div>
 
 <div class="fig figcenter fighighlight">
-  <img src="{{ site.baseurl }}/assets/examples/fig2.png">
+  <img src="{{ site.baseurl }}/assets/images/fig2.png">
   <div class="figcaption">Multiple possible scenarios</div>
 </div>
 
