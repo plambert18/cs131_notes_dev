@@ -87,14 +87,14 @@ Pixel and patch level models perform well at certain tasks, but they have limita
 Non-parametric models address this by assuming the Markov property and finding the probability $$P(p | N(p))$$.  First, we look at the input image and find spots that have neighbors similar to spots we have already synthesized. We then compute the likelihood of the RGB value of the current pixel conditioned on its neighborhood. The probability density function is just all similar neighborhoods in the input image. We can then sample from this PDF by picking one match at random and using the value of that pixel for the RGB value of the pixel to be synthesized. This allows us to iteratively expand the texture by working off of our previous results to find similar areas in the original image to sample from. 
 
 <div class="fig figcenter fighighlight">
-  <img src="https://github.com/wbuchan/cs131_notes_dev/assets/examples/Screen Shot 2020-10-13 at 12.27.20 PM.png">
+  <img src="https://github.com/wbuchan/cs131_notes_dev/assets/images/Screen Shot 2020-10-13 at 12.27.20 PM.png">
   <div class="figcaption">Sampling from similar neighborhood windows in the input image</div>
 </div>
 
 One of the most important challenges is picking the size of a neighborhood window. If your window is too small, the model does not have enough context to locate the pixel of interest within the pattern. Larger windows can synthesize more regular patterns (e.g. bricks), and thus capture more world information. For instance, a good window size for the example below is a window that can cover at least two objects in the pattern so it can discern the shape of the objects as well as how they are dispersed.  
 
 <div class="fig figcenter fighighlight">
-  <img src="https://github.com/wbuchan/cs131_notes_dev/assets/examples/Screen Shot 2020-10-13 at 12.51.35 PM.png">
+  <img src="https://github.com/wbuchan/cs131_notes_dev/assets/images/Screen Shot 2020-10-13 at 12.51.35 PM.png">
   <div class="figcaption">Picking the right window size is essential for capturing repeating patterns</div>
 </div>
 
